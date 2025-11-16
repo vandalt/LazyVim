@@ -16,6 +16,11 @@ return {
         function() require("chezmoi.pick")[LazyVim.pick.picker.name]() end ,
         desc = "Chezmoi",
       },
+      {
+        "<leader>sZ",
+        function() require("chezmoi.pick")[LazyVim.pick.picker.name](vim.fn.stdpath("config")) end ,
+        desc = "Chezmoi",
+      },
     },
     opts = {
       edit = {
