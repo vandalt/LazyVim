@@ -13,12 +13,16 @@ return {
     keys = {
       {
         "<leader>sz",
-        function() require("chezmoi.pick")[LazyVim.pick.picker.name]() end ,
+        function()
+          require("chezmoi.pick")[LazyVim.pick.picker.name]()
+        end,
         desc = "Chezmoi",
       },
       {
         "<leader>sZ",
-        function() require("chezmoi.pick")[LazyVim.pick.picker.name](vim.fn.stdpath("config")) end ,
+        function()
+          require("chezmoi.pick")[LazyVim.pick.picker.name](vim.fn.stdpath("config"))
+        end,
         desc = "Chezmoi",
       },
     },
@@ -51,7 +55,9 @@ return {
     optional = true,
     opts = function(_, opts)
       local projects = {
-        action = pick_chezmoi,
+        action = function()
+          require("chezmoi.pick")[LazyVim.pick.picker.name]()
+        end,
         desc = "  Config",
         icon = "",
         key = "c",
@@ -78,7 +84,9 @@ return {
         icon = " ",
         key = "c",
         desc = "Config",
-        action = pick_chezmoi,
+        action = function()
+          require("chezmoi.pick")[LazyVim.pick.picker.name]()
+        end,
       }
       local config_index
       for i = #opts.dashboard.preset.keys, 1, -1 do
