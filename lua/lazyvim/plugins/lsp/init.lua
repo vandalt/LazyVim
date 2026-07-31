@@ -33,7 +33,13 @@ return {
             },
           },
           jump = {
-            float = true,
+            on_jump = function(_, bufnr)
+              vim.diagnostic.open_float({
+                bufnr = bufnr,
+                scope = "cursor",
+                focus = false,
+              })
+            end,
           },
         },
         -- Enable this to enable the builtin LSP inlay hints on Neovim.
