@@ -32,7 +32,7 @@ return {
               [vim.diagnostic.severity.INFO] = LazyVim.config.icons.diagnostics.Info,
             },
           },
-          jump = {
+          jump = vim.fn.has("nvim-0.13") and {
             on_jump = function(_, bufnr)
               vim.diagnostic.open_float({
                 bufnr = bufnr,
@@ -40,7 +40,7 @@ return {
                 focus = false,
               })
             end,
-          },
+          } or { float = true },
         },
         -- Enable this to enable the builtin LSP inlay hints on Neovim.
         -- Be aware that you also will need to properly configure your LSP server to
